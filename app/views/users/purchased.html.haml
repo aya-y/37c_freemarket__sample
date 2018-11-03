@@ -1,1 +1,81 @@
-過去の取引
+//アカウント作成完了画面
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .l-single-container
+      .l-single-head
+        %h2 アカウント作成完了
+      .l-single-inner
+        .l-single-content
+          %a.next-submit{href: "/users/"}
+            ユーザーページに進む
+  =render "items/shared/simple_footer"
+  = invisible_recaptcha_tags
+
+
+
+//ユーザーログアウト画面
+= render partial: 'items/shared/header'
+.mypage-container.clearfix
+  %main.l-container
+    .next-submit
+      ログアウト
+  = render partial: 'sidebar'
+  = render partial: 'footer_sell_btn'
+= render partial: 'items/shared/footer'
+
+
+
+//新規会員登録時のアカウントの選択画面
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .i-single-container
+      .l-single-head
+        %h2 新規会員登録
+      .l-single-inner
+        .l-single-content
+          %a.btn-sns-facebook
+            Facebookで登録
+            .icon-facebook.fa-lg
+              = fa_icon'facebook-square'
+          %a.btn-sns-google
+            Googleで登録
+            .icon-google-plus.fa-lg
+              = fa_icon'google-plus'
+          %a.btn-mail
+            メールアドレスで登録
+            .icon-mail.fa-lg
+              = fa_icon'envelope'
+  =render "items/shared/simple_footer"
+  = invisible_recaptcha_tags
+
+
+
+//アカウント作成済みユーザーのログイン画面
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .login-panel
+      .login-no-account
+        %p アカウントをお持ちでない方はこちら
+        %a 新規会員登録
+      .login-form-inner
+        .btn-sns-facebook 
+          Facebookでログイン
+          .icon-facebook.fa-lg
+            = fa_icon'facebook-square'
+        .btn-sns-google
+          Googleでログイン
+          .icon-google-plus.fa-lg
+            = fa_icon'google-plus'
+      .login-meil
+        .form
+          %input{type: "password", class: "input-default", name: "meil-address", placeholder: "メールアドレス"}
+        .form
+          %input{type: "password", class: "input-default", name: "password", placeholder: "パスワード"}
+        .form
+          .login-submit
+            ログイン
+          %a パスワードをお忘れの方
+  =render "items/shared/simple_footer"

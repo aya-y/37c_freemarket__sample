@@ -5,21 +5,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null:false,add_index|
-|family_name|string|null:false|
-|first_name|string|null:false|
-|kana_family_name|string|null:false|
-|kana_first_name|string|null:false|
-|email_address|string|uniqueness:true,null:false|
+|email|string|uniqueness:true,null:false|
 |password|string|null:false|
-|birthday|date|null:false|
-|prefecture|integer|null:false, foreign_key: true|
-|city|string|null:false|
-|address|string|null:false|
-|residential_name|string|-------|
-|phone_number|integer|null:false|
-|postal_code|integer|null:false|
-|profile|text|-------|
-|user_image|string|-----|
 
 ### Association
 - has_many :items, dependent: :destroy
@@ -27,6 +14,7 @@
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :evaluations
+- has_one  :user_detail
 
 ### enum
 - prefectures: {
@@ -39,6 +27,27 @@
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+
+## user_detailsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|family_name|string|null:false|
+|first_name|string|null:false|
+|kana_family_name|string|null:false|
+|kana_first_name|string|null:false|
+|birthday|date|null:false|
+|prefecture|integer|null:false, foreign_key: true|
+|city|string|null:false|
+|address|string|null:false|
+|residential_name|string|-------|
+|phone_number|integer|null:false|
+|postal_code|integer|null:false|
+|profile|text|-------|
+|user_image|string|-----|
+
+### Association
+- belongs_to :user, optional: true, dependent: :destroy, foreign_key: "user_id"
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -140,5 +149,5 @@ belongs_to :item
 - belongs_to :user
 - belongs_to :evaluated_user, class_name:"User", foreign_key: :evaluated_user_id
 
-[ER図](https://gyazo.com/2d1361dbadd9f7db096033916ddd57ad)
+[ER図](https://gyazo.com/a0f32af9c4a49d1aa0183376ae8f40b3)
 

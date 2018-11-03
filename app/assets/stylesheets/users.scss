@@ -167,9 +167,6 @@
     background-position: center 40px;
 }
 
-span{
-  color: grey;
-}
 .my-gray{
   color: grey;
 }
@@ -197,7 +194,7 @@ span{
     font-size: 16px;
     line-height: 72px;
     @include tab() {
-      padding: 0 16px;
+    padding: 0 16px;
       }
     }
     .listing-tabs{

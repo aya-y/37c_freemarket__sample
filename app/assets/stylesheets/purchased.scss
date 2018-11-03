@@ -1,0 +1,285 @@
+//アカウント作成完了画面
+.single-main{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  .l-single-container{
+    width: 700px;
+    margin: 0 auto;
+    .l-single-head{
+      padding: 16px 16px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: white;
+      border-bottom: 1px solid #f5f5f5;
+      h2{
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+    .l-single-inner{
+      width: 700px;
+      .l-single-content{
+        background-color: white;
+        padding: 64px;
+        .form-group{
+          width: 320px;
+          margin: 0 auto;
+          label{
+            border-radius: 2px;
+          }
+          .required{
+            background-color: #ea352d;
+            color: white;
+            padding: 1px 5px;
+          }
+          .text{
+            background-color: #ea352d;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+          }
+          .input-default{
+            width: 320px;
+            height: 48px;
+            background-color: #fafafa;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin: 8px 0px 0px;
+            margin-bottom: 30px;
+          }
+        }
+        .next-submit{
+          margin-top: 16px;
+          width: 320px;
+          display: block;
+          margin: 16px auto;
+          line-height: 48px;
+          font-size: 14px;
+          color: white;
+          background-color: #ea352d;
+          text-align: center;
+          padding: 0px 10px;
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
+
+
+//ユーザーログアウト画面
+.mypage-container{
+    margin: 40px auto 0 ;
+    margin-bottom: 40px;
+  @include pc() {
+    width : 1020px;
+  }
+.l-container{
+  float: right;
+  width:700px;
+  box-sizing:border-box;
+  background-color: white;
+  padding: 64px;
+  .next-submit{
+    width: 320px;
+    display: block;
+    margin: 0px auto;
+    line-height: 48px;
+    font-size: 14px;
+    color: white;
+    background-color: #ea352d;
+    text-align: center;
+    padding: 0px 10px;
+  }
+}
+}
+
+
+//新規会員登録時のアカウントの選択画面
+.single-main{
+  width: 100%;
+  background-color: #f5f5f5;
+  .i-single-container{
+    width: 700px;
+    margin: 0 auto;
+    .l-single-head{
+      padding: 32px 16px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: white;
+      border-bottom: 1px solid #f5f5f5;
+      h2{
+        font-size: 22px;
+        font-weight: bold;
+        }
+    }
+    .l-single-inner{
+      width: 700px;
+      .l-single-content{
+        background-color: white;
+        padding: 64px;
+        .btn-sns-facebook{
+          width: 300px;
+          display: block;
+          margin: 0 auto;
+          line-height: 48px;
+          font-size: 14px;
+          color: white;
+          background-color: #385185;
+          text-align: center;
+          padding: 0px 10px;
+          .icon-facebook.fa-lg{
+            float: left;
+            margin: 15px 0px;
+          }
+        }
+        .btn-sns-google{
+          margin-top: 16px;
+          width: 300px;
+          display: block;
+          margin: 16px auto;
+          line-height: 48px;
+          font-size: 14px;
+          color: white;
+          background-color: #dc4e41;
+          text-align: center;
+          padding: 0px 10px;
+          .icon-google-plus.fa-lg{
+            float: left;
+            margin: 15px 0px;
+          }
+        }
+        .btn-mail{
+          width: 300px;
+          display: block;
+          margin: 16px auto;
+          line-height: 48px;
+          font-size: 14px;
+          background-color: #eee;
+          text-align: center;
+          padding: 0px 10px;
+          .icon-mail.fa-lg{
+            float: left;
+            margin: 15px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//アカウント作成済みユーザーのログイン画面
+.single-main{
+  width: 100%;
+  background-color: #f5f5f5;
+  .login-panel{
+    .login-no-account{
+      padding: 40px 64px;
+      background-color: white;
+      width: 456px;
+      margin: 0px auto;
+      border-bottom: 1px solid #f5f5f5;
+      p{
+        font-size: 14px;
+        text-align: center;
+      }
+      a{
+        width: 300px;
+        display: block;
+        margin: 0 auto;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: #0099e8;
+        text-align: center;
+        padding: 0px 10px;
+      }
+    }
+    .login-form-inner{
+      width: 456px;
+      margin: 0 auto;
+      padding: 32px 64px;
+      background-color: white;
+      border-bottom: 1px solid #f5f5f5;
+      .btn-sns-facebook{
+        width: 300px;
+        display: block;
+        margin: 0 auto;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: #385185;
+        text-align: center;
+        padding: 0px 10px;
+        .icon-facebook.fa-lg{
+          float: left;
+          margin: 15px 0px;
+        }
+      }
+      .btn-sns-google{
+        margin-top: 16px;
+        width: 300px;
+        display: block;
+        margin: 16px auto;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: #dc4e41;
+        text-align: center;
+        padding: 0px 10px;
+        .icon-google-plus.fa-lg{
+          float: left;
+          margin: 15px 0px;
+        }
+      }
+    }
+    .login-meil{
+      width: 456px;
+      height: 300px;
+      margin: 0 auto;
+      padding: 24px 64px 32px;
+      background-color: white;
+      .form{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .input-default{
+          width: 300px;
+          height: 40px;
+          display: block;
+          margin: 16px auto;
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+          padding: 0px 10px;
+        }
+        .login-submit{
+          margin-top: 16px;
+          width: 300px;
+          display: block;
+          margin: 16px auto;
+          line-height: 48px;
+          font-size: 14px;
+          color: white;
+          background-color: #dc4e41;
+          text-align: center;
+          padding: 0px 10px;
+        }
+        a{
+          color: #0099e8;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+

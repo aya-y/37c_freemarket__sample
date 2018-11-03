@@ -23,3 +23,8 @@ $tab: 768px;
   border: 1px solid #ccc;
   font-size: 16px;
 }
+
+@mixin link(){
+  color: #0099e8;
+  text-decoration: none;
+}
