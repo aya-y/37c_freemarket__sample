@@ -2,7 +2,7 @@
 .single-main{
   width: 100%;
   height: 100%;
-  background-color: #f5f5f5;
+  background-color: $thin_gray;
   .l-single-container{
     width: 700px;
     margin: 0 auto;
@@ -11,7 +11,7 @@
       margin: 0 auto;
       text-align: center;
       background-color: white;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $thin_gray;
       h2{
         font-size: 22px;
         font-weight: bold;
@@ -29,12 +29,12 @@
             border-radius: 2px;
           }
           .required{
-            background-color: #ea352d;
+            background-color: $clean_red;
             color: white;
             padding: 1px 5px;
           }
           .text{
-            background-color: #ea352d;
+            background-color: $clean_red;
             margin: 0 0 0 8px;
             padding: 2px 4px;
             border-radius: 2px;
@@ -45,12 +45,12 @@
           .input-default{
             width: 320px;
             height: 48px;
-            background-color: #fafafa;
+            background-color: $form_gray;
             width: 100%;
             font-size: 16px;
             line-height: 1.5;
             border-radius: 4px;
-            border: 1px solid #ccc;
+            border: 1px solid $thin_gray;
             margin: 8px 0px 0px;
             margin-bottom: 30px;
           }
@@ -92,7 +92,7 @@
     line-height: 48px;
     font-size: 14px;
     color: white;
-    background-color: #ea352d;
+    background-color: $clean_red;
     text-align: center;
     padding: 0px 10px;
   }
@@ -103,7 +103,7 @@
 //新規会員登録時のアカウントの選択画面
 .single-main{
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: $thin_gray;
   .i-single-container{
     width: 700px;
     margin: 0 auto;
@@ -112,7 +112,7 @@
       margin: 0 auto;
       text-align: center;
       background-color: white;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $thin_gray;
       h2{
         font-size: 22px;
         font-weight: bold;
@@ -130,7 +130,7 @@
           line-height: 48px;
           font-size: 14px;
           color: white;
-          background-color: #385185;
+          background-color: $facebook_icon;
           text-align: center;
           padding: 0px 10px;
           .icon-facebook.fa-lg{
@@ -146,7 +146,7 @@
           line-height: 48px;
           font-size: 14px;
           color: white;
-          background-color: #dc4e41;
+          background-color: $google_icon;
           text-align: center;
           padding: 0px 10px;
           .icon-google-plus.fa-lg{
@@ -160,7 +160,7 @@
           margin: 16px auto;
           line-height: 48px;
           font-size: 14px;
-          background-color: #eee;
+          background-color: $meil_icon;
           text-align: center;
           padding: 0px 10px;
           .icon-mail.fa-lg{
@@ -178,14 +178,14 @@
 //アカウント作成済みユーザーのログイン画面
 .single-main{
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: $thin_gray;
   .login-panel{
     .login-no-account{
       padding: 40px 64px;
       background-color: white;
       width: 456px;
       margin: 0px auto;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $thin_gray;
       p{
         font-size: 14px;
         text-align: center;
@@ -197,7 +197,7 @@
         line-height: 48px;
         font-size: 14px;
         color: white;
-        background-color: #0099e8;
+        background-color: $new_acount;
         text-align: center;
         padding: 0px 10px;
       }
@@ -207,7 +207,7 @@
       margin: 0 auto;
       padding: 32px 64px;
       background-color: white;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $thin_gray;
       .btn-sns-facebook{
         width: 300px;
         display: block;
@@ -215,7 +215,7 @@
         line-height: 48px;
         font-size: 14px;
         color: white;
-        background-color: #385185;
+        background-color: $facebook_icon;
         text-align: center;
         padding: 0px 10px;
         .icon-facebook.fa-lg{
@@ -231,7 +231,7 @@
         line-height: 48px;
         font-size: 14px;
         color: white;
-        background-color: #dc4e41;
+        background-color: $google_icon;
         text-align: center;
         padding: 0px 10px;
         .icon-google-plus.fa-lg{
@@ -268,12 +268,12 @@
           line-height: 48px;
           font-size: 14px;
           color: white;
-          background-color: #dc4e41;
+          background-color: $clean_red;
           text-align: center;
           padding: 0px 10px;
         }
         a{
-          color: #0099e8;
+          color: $light_blue;
           font-size: 12px;
         }
       }
@@ -336,10 +336,10 @@
         .input-default{
           height: 200px;
           display: block;
-          line-height: 48px;
-          font-size: 20px;
+          line-height: 30px;
+          font-size: 16px;
           text-align: left;
-          padding: 0px 10px;
+          padding: 10px;
         }
       }
       .update-submit{
@@ -347,7 +347,7 @@
         line-height: 48px;
         font-size: 14px;
         color: white;
-        background-color: #ea352d;
+        background-color: $clean_red;
         text-align: center;
         padding: 0px 10px;
         margin-top: 10px;
@@ -356,3 +356,74 @@
   }
 }
 
+
+
+//本人情報の確認
+.mypage-container{
+    margin: 40px auto 0 ;
+    margin-bottom: 40px;
+  @include pc() {
+    width : 1020px;
+  }
+  .l-container{
+    float: right;
+    width:700px;
+    box-sizing:border-box;
+    .title{
+      background-color: white;
+      border-bottom: 1px solid $thin_gray;
+      h2{
+        font-size: 24px;
+        font-weight: 600;
+        padding: 8px 14px;
+        text-align: center;
+        border-bottom: 1px solid $thin_gray;
+      }
+      h3{
+        text-align: center;
+      }
+    }
+    .l-single-inner{
+      background-color: white;
+      padding: 64px;
+
+      .form-group{
+        margin-bottom: 30px;
+        label{
+          font-weight: 600px;
+        }
+        .require{
+          background-color: $clean_red;
+          color: white;
+          padding: 1px 5px;
+        }
+        .date-default{
+          width: 140px;
+          height: 48px;
+          line-height: 10px;
+        }
+        h4{
+          color: gray;
+        }
+        p{
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        a{
+          line-height: 1.5;
+          color: #b3d4fc;
+        }
+      }
+      .update-submit{
+        display: block;
+        margin: 0px auto;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: $clean_red;
+        text-align: center;
+        padding: 0px 10px;
+      }
+    }
+  }
+}

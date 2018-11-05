@@ -1,2 +1,30 @@
 プロフィール
 = @user.nickname
+= render partial: 'items/shared/header'
+.mypage-container.clearfix
+  %main.l-container
+    %section.title
+      %h2
+        プロフィール
+    %section.profile-icon
+      = form_for @user, url: {action: "show"} do |f|
+        %figure
+          = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
+        .name-form
+          = f.text_field :nickname, class: "name-default", autofocus: true,placeholder: "Ann", value: @user.nickname
+    .setting-profile-content
+      = form_for (@user), url: {action: "show"} do |f|
+        .form
+          = f.text_area :nickname, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: simple_format(@user.nickname)
+          = f.submit "変更する", class: "next-submit"
+  = render partial: 'sidebar'
+  = render partial: 'footer_sell_btn'
+= render partial: 'items/shared/footer'
+
+
+/ = form_for @user, url: {action: "confirm"} do |f|
+/             = devise_error_messages!
+/             .form-group
+/               = f.label :ニックネーム
+/               = f.label :必須, class: "required"
+/               = f.text_field :nickname, class: "input-default", autofocus: true, placeholder: "例）メルカリ太郎"

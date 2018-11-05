@@ -115,29 +115,32 @@
     %section.title
       %h2
         本人確認情報の登録
-      %p
+      %h3
         お客様の安心・安全な取引のため、本人情報のご登録をお願いしております。
     %section.l-single-inner
       .form-group
         %label 住所
-        %span 必須
+        %span.require 必須
         %p 〒123-4567
         %p 東京都千代田区千代田１−１
-        %p 清野 三七
-
-
-
-
-
-        = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
-      .name-form
-        %input{type: "text", class: "name-default", name: "meil-address", placeholder: ""}
-      .user-number
-    .setting-profile-content
-      .form
-        %input{type: "text_area", class: "input-default", name: "meil-address", placeholder: ""}
-        .update-submit
-          変更する
+        %p 清野 三十七
+        %a 編集
+      .form-group
+        %label 生年月日
+        %span.require 必須
+        %br
+        %br
+        %select{type: "text", class: "date-default", name: "meil-address", placeholder: ""}
+        年
+        %select{type: "text", class: "date-default", name: "meil-address", placeholder: ""}
+        月
+        %select{type: "text", class: "date-default", name: "meil-address", placeholder: ""}
+        日
+        %br
+        %br
+        %h4 ※出品されたことのある、本人情報未登録のお客様もご対象となります。
+      .update-submit
+        登録する
   = render partial: 'sidebar'
   = render partial: 'footer_sell_btn'
 = render partial: 'items/shared/footer'
