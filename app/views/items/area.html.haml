@@ -1,3 +1,4 @@
+= "#{@items.first.prefecture}の商品一覧"
 - @items.each do |item|
   %section.item-box
     =link_to "/items/show/#{item.id}" do

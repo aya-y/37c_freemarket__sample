@@ -1,0 +1,39 @@
+%ul
+  %li
+    = @item.item_name
+  %li
+    = image_tag @item.images.first.image, size: "300x300"
+  -@images.each do |image|
+    = image_tag image.image, size: "75x75"
+  %li
+    =link_to "/users/show/#{@item.user.id}" do
+      = @item.user.nickname
+  %li
+    =link_to "/category/large_category/#{@item.large_category_id}" do
+      = @item.large_category.large_category
+  %li
+    =link_to "/category/medium_category/#{@item.large_category_id}/#{@item.medium_category_id}" do
+      = @item.medium_category.medium_category
+  %li
+    =link_to "/category/small_category/#{@item.large_category_id}/#{@item.medium_category_id}/#{@item.small_category_id}" do
+      = @item.small_category.small_category
+  %li
+    = @item.size
+  %li
+    = @item.condition
+  %li
+    = @item.charge_method
+  %li
+    = @item.delivery_method
+  %li
+    =link_to "/items/area/#{@item.prefecture}" do
+      = @item.prefecture
+  %li
+    = @item.handling_time
+  %li
+    = @item.price
+  %li
+    = @item.description
+
+
+= link_to '購入画面に進む', "/items/update/#{@item.id}"

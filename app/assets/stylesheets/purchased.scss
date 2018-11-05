@@ -85,8 +85,6 @@
   float: right;
   width:700px;
   box-sizing:border-box;
-  background-color: white;
-  padding: 64px;
   .next-submit{
     width: 320px;
     display: block;
@@ -283,3 +281,75 @@
   }
 }
 
+
+
+
+//プロフィール編集画面
+.mypage-container{
+    margin: 40px auto 0 ;
+    margin-bottom: 40px;
+  @include pc() {
+    width : 1020px;
+  }
+  .l-container{
+    float: right;
+    width:700px;
+    box-sizing:border-box;
+    .title{
+      background-color: white;
+      h2{
+        font-size: 24px;
+        font-weight: 600;
+        padding: 8px 14px;
+        text-align: center;
+      }
+    }
+    .user-icon{
+      background:url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?98770078");
+      padding: 60px 200px 0px 0px;
+      .user-image{
+        float: left;
+      }
+      .name-form{
+        .name-default{
+          width: 220px;
+          height: 48px;
+          background-color: white;
+          text-align: left;
+          font-size: 16px;
+          padding: 5px 10px;
+          margin-top: 6px;
+        }
+      }
+    }
+    .setting-profile-content{
+      background-color: white;
+      padding: 30px 16px;
+      height: 350px;
+      .form{
+        width: 100%;
+        height: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .input-default{
+          height: 200px;
+          display: block;
+          line-height: 48px;
+          font-size: 20px;
+          text-align: left;
+          padding: 0px 10px;
+        }
+      }
+      .update-submit{
+        display: block;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: #ea352d;
+        text-align: center;
+        padding: 0px 10px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

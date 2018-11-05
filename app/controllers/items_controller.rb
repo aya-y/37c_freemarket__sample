@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # before_action :move_to_root
 
   def index
+    @items = Item.order("updated_at desc")
   end
 
   def new
@@ -16,18 +17,29 @@ class ItemsController < ApplicationController
         redirect_to "/users"
     else
       flash[:notice] = "出品に失敗しました。"
-      render :index
+      redirect_to :root
     end
   end
 
   def show
-    @items = Item.order(updated_at: :desc)
+    @item = Item.find(params[:id])
+    @images = @item.images.order("created_at DESC")
   end
 
+  def update
+    @item = Item.find(params[:id])
+    @image = @item.images.first
+  end
+
+  def area
+    @items = Item.where(prefecture: params[:prefecture])
+  end
 
   private
+
   def item_params
     params.require(:item).permit(:item_name, :description, :size, :condition, :charge_method, :prefecture, :handling_time, :price, :large_category_id, :medium_category_id, :small_category_id, :bland_id, :delivery_method,images_attributes:[:image]).merge(user_id: 1)
   end
 
 end
+

@@ -79,3 +79,31 @@
             ログイン
           %a パスワードをお忘れの方
   =render "items/shared/simple_footer"
+
+
+
+
+//プロフィール編集画面
+= render partial: 'items/shared/header'
+.mypage-container.clearfix
+  %main.l-container
+    %section.title
+      %h2
+        プロフィール
+    %section.user-icon
+      %a
+        %figure
+          = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
+        .name-form
+          %input{type: "text", class: "name-default", name: "meil-address", placeholder: ""}
+        .user-number
+    .setting-profile-content
+      .form
+        %input{type: "text_area", class: "input-default", name: "meil-address", placeholder: ""}
+        .update-submit
+          変更する
+  = render partial: 'sidebar'
+  = render partial: 'footer_sell_btn'
+= render partial: 'items/shared/footer'
+
+

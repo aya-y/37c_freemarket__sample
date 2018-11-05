@@ -1,14 +1,10 @@
 require 'rails_helper'
 
 describe ItemsController do
-
   describe 'Get #new' do
     it "renders the :new template" do
       get :new
       expect(response).to render_template :new
-      # item = build(:item)
-      # post :create,item: item
-
     end
   end
 
@@ -24,15 +20,26 @@ describe ItemsController do
         item = Item.new
         expect(item.save).to be_falsey
     end
-
-      # it 'saves the new message in the database' do
-      #   expect{post :create, params}.to change(Message, :count).by(1)
-      # end
-
-      # it 'redirects to messages#index' do
-      #   post :create, params
-      #   expect(response).to redirect_to group_messages_path
-      # end
   end
 
+  describe 'Get #show' do
+    it 'assigns the requested contact to @item' do
+      item = create(:item)
+      get :show, params: { id: item }
+      expect(assigns(:item)).to eq item
+    end
+    it "renders the :show template" do
+      item = create(:item)
+      get :show, params: { id: item }
+      expect(response).to render_template :show
+    end
+  end
+
+  describe 'Get #area' do
+    it "render the :area template" do
+      item = create(:item)
+      get :area, params: { prefecture: item}
+      expect(response).to render_template :area
+    end
+  end
 end

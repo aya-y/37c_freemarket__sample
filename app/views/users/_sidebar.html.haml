@@ -23,7 +23,7 @@
             出品する
             %i.fas.fa-angle-right.fa-lg
         %li
-          = link_to "/users/show",class: "mypage-nav__list--item" do
+          = link_to "/users/listing",class: "mypage-nav__list--item" do
             出品した商品 - 出品中
             %i.fas.fa-angle-right.fa-lg
         %li
@@ -71,7 +71,7 @@
       %h3.mypage-nav__head 設定
       %ul.mypage-nav__list
         %li
-          %a.mypage-nav__list--item{href: "/jp/mypage/profile/"}
+          = link_to "/users/show/#{params[:id]}",class: "mypage-nav__list--item" do
             プロフィール
             %i.fas.fa-angle-right.fa-lg
         %li

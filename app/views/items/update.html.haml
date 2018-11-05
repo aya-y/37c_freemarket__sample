@@ -1,0 +1,45 @@
+.single-container
+  = render "items/shared/simple_header"
+  %main.single-main
+    %section.l-single-container.buy-item-container
+      %h2 購入を確定しますか？
+      %section.buy-item
+        .buy-content
+          .buy-content__image
+            = image_tag @image.image, class: "buy-img"
+          %p.buy-content__name.bold
+          = @item.item_name
+          %form.buy-content__form
+            %p.buy-price.bold
+              = number_to_currency(@item.price, unit: "¥",precision: 0)
+              %span.item-shipping-fee 送料込み
+            .buy-point
+              ポイントを使う
+              = fa_icon 'angle-down', class: "icon-arrow-right"
+            .buy-price-table
+              %ul.buy-you-pay.bold
+                %li.buy-price-cell 支払い金額
+                %li.buy-price-cell
+                  %span.data-buy-pay
+                  = number_to_currency(@item.price, unit: "¥",precision: 0)
+            %p.has-error-text 配送先と支払い方法の入力を完了してください。
+            %button.btn-default.btn-red.bold 購入する
+      %section.buy-item.buy-user-info
+        .buy-content-inner
+          %h3.bold 配送先
+          %address.buy-user-info-text
+            〒150-0043
+            %br 東京都渋谷区 道玄坂2丁目23−12 フォンティスビル7F
+            TECH::EXPERT
+          %a.buy-user-info-fix
+            %span 変更する
+            = fa_icon 'angle-right', class: "icon-arrow-right"
+      %section.buy-user-info.buy-item
+        .buy-content-inner
+          %h3.bold 支払い方法
+          %p.buy-user-info-text
+            クレジット番号
+          %a.buy-user-info-fix
+            %span 変更する
+            = fa_icon 'angle-right', class: "icon-arrow-right"
+  = render "items/shared/simple_footer"

@@ -28,3 +28,8 @@ $tab: 768px;
   color: #0099e8;
   text-decoration: none;
 }
+
+@mixin font(){
+  margin-top: 8px;
+  line-height: 1.5;
+}
