@@ -144,6 +144,19 @@
 = render partial: 'items/shared/footer'
 
 
+/ 下記idは仮置きです。右記を使用する予定です。- if user_signed_in? && current_user.id == @item.user_id
+/ - if @item.user_id == @user.id
+/   %ul
+/     %li
+/       = link_to "商品の編集"
+/     %li
+/       or
+/     %li
+/       = link_to "出品を停止する"
+/     %li
+/       = link_to "この商品を削除する","/items/#{@item.id}",method: :delete, data: {confirm: "本当に削除しますか？"}
+/ - else
+/   = link_to '購入画面に進む', "/items/update/#{@item.id}"
 
 
 -# %ul
@@ -176,3 +189,4 @@
 
 
 -# = link_to '購入画面に進む', "/items/update/#{@item.id}"
+

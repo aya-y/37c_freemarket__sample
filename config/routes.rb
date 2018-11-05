@@ -17,12 +17,11 @@ Rails.application.routes.draw do
   get "users/purchase" => "users#purchase"
   get "users/purchased" => "users#purchased"
   get "users/listing" => "users#listing"
-  resources :users, only: [:index, :edit, :update,:show]
-  get "items/show/:id" => "items#show"
+  resources :users, only: [:index, :edit, :update]
   get "items/update/:id" => "items#update"
   get "items/area/:prefecture" => "items#area"
-  resources :items, only: [:new, :create, :edit, :update, :show]
-  post "item/create" => "item/create"
+  resources :items, only: [:new, :create, :edit, :update, :destroy, :show]
+  post "items/create" => "items/create"
   resources :category, only: [:index, :show]
   get "category/large_category/:large_category_id" => "category#large_category"
   get "category/medium_category/:large_category_id/:medium_category_id" => "category#medium_category"
