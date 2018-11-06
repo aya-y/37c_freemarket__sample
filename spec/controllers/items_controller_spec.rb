@@ -42,4 +42,12 @@ describe ItemsController do
       expect(response).to render_template :area
     end
   end
+
+  describe 'delete #delete'do
+    it "item successfully deleted" do
+      item = create(:item)
+      expect{item.delete}.to change{Item.count}.by(-1)
+      expect(item.delete).to be_truthy
+    end
+  end
 end
