@@ -1,39 +1,192 @@
-%ul
-  %li
+= render partial: 'items/shared/header'
+%section.item-box-container.l-single-container.item-single-contents
+  %h1.item-detail-name.bold
     = @item.item_name
-  %li
-    = image_tag @item.images.first.image, size: "300x300"
-  -@images.each do |image|
-    = image_tag image.image, size: "75x75"
-  %li
-    =link_to "/users/show/#{@item.user.id}" do
-      = @item.user.nickname
-  %li
-    =link_to "/category/large_category/#{@item.large_category_id}" do
-      = @item.large_category.large_category
-  %li
-    =link_to "/category/medium_category/#{@item.large_category_id}/#{@item.medium_category_id}" do
-      = @item.medium_category.medium_category
-  %li
-    =link_to "/category/small_category/#{@item.large_category_id}/#{@item.medium_category_id}/#{@item.small_category_id}" do
-      = @item.small_category.small_category
-  %li
-    = @item.size
-  %li
-    = @item.condition
-  %li
-    = @item.charge_method
-  %li
-    = @item.delivery_method
-  %li
-    =link_to "/items/area/#{@item.prefecture}" do
-      = @item.prefecture
-  %li
-    = @item.handling_time
-  %li
-    = @item.price
-  %li
-    = @item.description
+  .item-main-content.clearfix
+    .item-photo
+      .owl-carousel
+        .owl-slider
+          = image_tag @item.images.first.image, size: "300x300"
+          -# .owlSet
+          -#   .owl-stage-outer slide1
+          -#   .owl-stage-outer slide2
+          -#   .owl-stage-outer slide3
+          -#   .owl-stage-outer slide4
+          -# %img{src: "https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m72872829960_1.jpg?1540973038", class: "owl-lazy", width: "300"}
+        -# %button.slider-next 次へ
+        .owl-dots
+          .owl-dot
+            -@images.each do |image|
+              = image_tag image.image, size: "75x75", class: "owl"
+          -#   %img{src: "https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m72872829960_1.jpg?1540973038", class: "owl-lazy", width: "75"}
+          -# .owl-dot
+          -#   %img{src: "https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m72872829960_1.jpg?1540973038", class: "owl-lazy", width: "75"}
+          -# .owl-dot
+          -#   %img{src: "https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m72872829960_1.jpg?1540973038", class: "owl-lazy", width: "75"}
+    %table.item-detail-table
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            =link_to user_path(@item.user.id) do
+              = @item.user.nickname
+            %ul
+              %li.item-user-ratings
+                %i{class: "far fa-kiss-wink-heart icon-good"}
+                %span 105
+              %li.item-user-ratings
+                %i{class: "far fa-meh-blank icon-normal"}
+                %span 10
+              %li.item-user-ratings
+                %i{class: "far fa-grin-tongue-squint icon-bad"}
+                %span 1
+        %tr
+          %th カテゴリー
+          %td
+            =link_to "/category/large_category/#{@item.large_category_id}" do
+              = @item.large_category.large_category
+            =link_to "/category/medium_category/#{@item.large_category_id}/#{@item.medium_category_id}" do
+              .item-detail-table-sub-category
+                =fa_icon 'angle-right', class: "icon-arrow-right"
+                = @item.medium_category.medium_category
+            =link_to "/category/small_category/#{@item.large_category_id}/#{@item.medium_category_id}/#{@item.small_category_id}" do
+              .item-detail-table-sub-sub-category
+                =fa_icon 'angle-right', class: "icon-arrow-right"
+                = @item.small_category.small_category
+        %tr
+          %th ブランド
+          %td
+            %a
+              イーアールジー
+        %tr
+          %th 商品のサイズ
+          %td
+            = @item.size
+        %tr
+          %th 商品の状態
+          %td
+            = @item.condition
+        %tr
+          %th 配送料の負担
+          %td
+            = @item.charge_method
+        %tr
+          %th 配送の方法
+          %td
+            = @item.delivery_method
+        %tr
+          %th 配送元地域
+          %td
+            =link_to "/items/area/#{@item.prefecture}" do
+              = @item.prefecture
+        %tr
+          %th 発送日の目安
+          %td
+            = @item.handling_time
+  .item-price-box
+    %span.item-price.bold
+      = number_to_currency(@item.price, unit: "¥",precision: 0)
+    %span.item.tax  (税込)
+    %span.item-shipping-fee 送料込み
+  = link_to '購入画面に進む', "/items/update/#{@item.id}", class: "item-buy-btn btn-red bold"
+  .item-description
+    %p
+      = simple_format(@item.description)
+    .item-button-container.clearfix
+      .item-button-left
+        %button.item-button.item-button-like
+          %i{class: "far fa-heart heart-icon"}
+          %span いいね！
+          %span.fade-in-down 5
+        %button.item-button.item-button-like.button-report.clearfix
+          %i{class: "far fa-flag flag-icon"}
+          %span 不適切な商品の報告
+      .item-button-right
+        %a
+          = fa_icon 'lock', class: 'lock-icon'
+          %span あんしん・あんぜんへの取り組み
+.item-detail-message
+  .message-container
+    %form.message-form
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.textarea-default
+      %button.message-submit.btn-default.btn-gray
+        %span コメントする
+%ul.nav-detail-item.clearfix
+  %li.nav-item-link-prev
+    %a
+      = fa_icon 'angle-left', class: 'lock-icon'
+      VANS スニーカー
+  %li.nav-item-link-next
+    %a
+      ATSUGIフラワードット側ストッキング
+      = fa_icon 'angle-right', class: 'lock-icon'
+.item-social-media-box
+  %ul.social-media-box
+    %li
+      %a
+        %i{class: 'fab fa-facebook-square sns-icon facebook-icon'}
+    %li
+      %a
+        %i{class: 'fab fa-twitter sns-icon twitter-icon'}
+    %li
+      %a
+        %i{class: 'fab fa-line sns-icon line-icon'}
+    %li
+      %a
+        %i{class: 'fab fa-pinterest-square sns-icon pinterest-icon'}
+.item-in-user-profile
+  %h2.items-box-head.bold
+    %a 全ての商品
+
+  .items-profile.items-box-content.clearfix
+    = render partial: "items/shared/item_three"
+= render partial: 'items/shared/footer'
 
 
-= link_to '購入画面に進む', "/items/update/#{@item.id}"
+/ 下記idは仮置きです。右記を使用する予定です。- if user_signed_in? && current_user.id == @item.user_id
+/ - if @item.user_id == @user.id
+/   %ul
+/     %li
+/       = link_to "商品の編集"
+/     %li
+/       or
+/     %li
+/       = link_to "出品を停止する"
+/     %li
+/       = link_to "この商品を削除する","/items/#{@item.id}",method: :delete, data: {confirm: "本当に削除しますか？"}
+/ - else
+/   = link_to '購入画面に進む', "/items/update/#{@item.id}"
+
+
+-# %ul
+-#   %li
+-#     = @item.item_name
+-#   %li
+-#     = image_tag @item.images.first.image, size: "300x300"
+-#   -@images.each do |image|
+-#     = image_tag image.image, size: "75x75"
+-#   %li
+-#     =link_to "/users/show/#{@item.user.id}" do
+-#       = @item.user.nickname
+-#   %li
+-#     = @item.size
+-#   %li
+-#     = @item.condition
+-#   %li
+-#     = @item.charge_method
+-#   %li
+-#     = @item.delivery_method
+-#   %li
+-#     =link_to "/items/area/#{@item.prefecture}" do
+-#       = @item.prefecture
+-#   %li
+-#     = @item.handling_time
+-#   %li
+-#     = @item.price
+-#   %li
+-#     = @item.description
+
+
+-# = link_to '購入画面に進む', "/items/update/#{@item.id}"
+

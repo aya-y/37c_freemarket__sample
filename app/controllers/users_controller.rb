@@ -10,24 +10,25 @@ class UsersController < ApplicationController
   end
 
   def in_progress
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def completed
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def purchase
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def purchased
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def listing
-    # @user_details = UserDetail.find_by(params[:id])
-    # @user = @user_details.user
 
     @user = User.find_by(id: 1)#idは仮置きです
-
-    # @user_details = @user.user_detail
+    @items = @user.items.order("created_at DESC")
   end
 
 end

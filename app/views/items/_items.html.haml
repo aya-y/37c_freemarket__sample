@@ -1,6 +1,6 @@
 - @items.each do |item|
   %section.item-box
-    =link_to "/items/show/#{item.id}" do
+    =link_to item_path(item.id) do
       %figure.item-box__photo
         .item-box-image
           = image_tag item.images.first.image, size: "213x213"
@@ -9,7 +9,7 @@
           = item.item_name
         .item-box__text__num.clearfix
           .item-box__text__num__price
-            = item.price
+            = number_to_currency(item.price, unit: "¥",precision: 0)
           .item-box__text__num__likes.font-2
             %i{class: "far fa-heart heart-icon"}
             %span 10

@@ -52,6 +52,7 @@
       &__text{
         padding: 16px;
         height: 110px;
+        color: #333;
         &__name{
           overflow: hidden;
           position: relative;
@@ -75,7 +76,6 @@
           .heart-icon{
             color: #CCCCCC;
             margin-right: 4px;
-
           }
         }
         &__tax{
@@ -83,8 +83,8 @@
           clear: both;
         }
       }
-   }
-}
+    }
+  }
 }
 
  .view-all{

@@ -12,31 +12,24 @@
         %li
           %h3  売却済
       .tab-content
-        -# %ul.mypage-item-list
-        -#   %li.mypage-item-not-found.bold 出品中の商品がありません
-        %ul.notification__content
-          %li
-            %a.mypage-item-link
-              %figure
-                = image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png", width: "48"
-              .mypage-item-body
-                .mypage-item-text
-                  発送のお知らせ
-                %time
-                  %i.far.fa-clock.my-gray
-                  %span 2 日前
-                  %i.fas.fa-angle-right.fa-lg
-          %li
-            %a.mypage-item-link
-              %figure
-                = image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png", width: "48"
-              .mypage-item-body
-                .mypage-item-text
-                  発送のお知らせ
-                %time
-                  %i.far.fa-clock.my-gray
-                  %span 2 日前
-                  %i.fas.fa-angle-right.fa-lg
+        - if @items.length != 0
+          %ul.notification__content
+            - @items.each do |item|
+              %li
+                .mypage-item-link
+                  =link_to item_path(item.id) do
+                    %figure
+                      = image_tag item.images.first.image, width: "48"
+                    .mypage-item-body
+                      .mypage-item-text
+                        %ul
+                          %li
+                            = item.item_name
+                          %li
+                            出品中
+        - else
+          %ul.mypage-item-list
+          %li.mypage-item-not-found.bold 出品中の商品がありません
     %ul.mypage-history
       %li.paper-prev.paper-cell
       %li.paper-nextpaper-cell

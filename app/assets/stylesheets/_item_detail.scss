@@ -1,4 +1,22 @@
-// 商品詳細画面
+// スライダーの記載
+.owl-slider{
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  .owlSet{
+      width: 1200px;
+      position:absolute;
+    .owl-stage-outer{
+       // display:block;
+       width:300px;
+       height: 300px;
+       border: 1px solid #f00;
+       float: left;
+    }
+  }
+}
+//アイテム詳細ページ
 .item-single-contents{
   background-color: #fff;
   margin: 40px auto 0;
@@ -18,17 +36,16 @@
         min-width: 300px;
         min-width: 300px;
         min-height: 375px;
-        .owl-stage-outer img{
-           display:block;
-        }
-        .owl-dots{
-          line-height: 0;
+      .owl-dots{
+        line-height: 0;
         .owl-dot{
-          width: 75px;
+          width: auto;
           overflow: hidden;
-          display: inline-block;
           margin:0 -1.5px;
           opacity: 0.4;
+          .owl{
+            margin:0 -1.7px;
+          }
         }
         .active{
           opacity: 1;

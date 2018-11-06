@@ -80,8 +80,10 @@
   .input-default{
     display: block;
     width: 100%;
+    max-width:100%;
     margin-top: 8px;
     padding: 10px 16px 8px;
+    overflow-wrap: break-word;
     @include form();
     background-color: #fff;
   }
@@ -159,5 +161,4 @@
   padding-top: 0;
   border: 0;
 }
-
 
