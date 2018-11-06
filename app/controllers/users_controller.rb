@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find_by(id: 2)         #idは仮置きです
+    @user = User.find_by(id: 1)         #idは仮置きです
   end
 
   def show
@@ -10,15 +10,19 @@ class UsersController < ApplicationController
   end
 
   def in_progress
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def completed
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def purchase
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def purchased
+    @user = User.find_by(id: 1)#idは仮置きです
   end
 
   def listing
