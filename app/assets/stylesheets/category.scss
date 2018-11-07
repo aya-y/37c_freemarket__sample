@@ -1,3 +1,93 @@
-// Place all the styles related to the category controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.category-container{
+    margin: 40px auto 0 ;
+    margin-bottom: 40px;
+  @include pc() {
+    width : 700px;
+  }
+}
+
+.c-container{
+  width:700px;
+  box-sizing:border-box;
+  margin: 40 auto;
+  .c-title{
+    background-color: $thin-gray;
+    h2{
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+  // .large-category{
+  //   height: 100%;
+  //   width: 100%;
+    .category-box{
+
+      .l-category-n{
+        border-radius: 3%;
+        box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+        height: 40px;
+        font-size: 16px;
+        text-align: center;
+        padding: 15px 30px;
+        margin: 5px;
+        float: left;
+        background-color: white;
+      }
+    // }
+  }
+}
+.m-container{
+  width:700px;
+  box-sizing:border-box;
+  margin: 40 auto;
+  background-color: white;
+  clear: both;
+  .l-title{
+    background-color: $clean_red;
+    clear: both;
+    h4{
+      font-size: 22px;
+      font-weight: bold;
+      margin: 10px;
+      padding: 10px;
+      color: white;
+    }
+  }
+  .medium-category{
+    background-color: white;
+    padding: 10px;
+    .category-box{
+      width: 200px;
+      .m-category-n{
+        height: 40px;
+        width: 600px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 3;
+        margin: 5px;
+        float: left;
+        background-color: white;
+      }
+    }
+      .name{
+        font-size: 14px;
+        float: left;
+        width: 320px;
+        padding: 8px;
+        margin-left: 20px;
+        color: $new_acount;
+
+      }
+  }
+}
+
+
+.category-box .l-category-n:hover{
+  background-color: $clean_red;
+  color: white;
+}
+
+
+.s-category .name:hover{
+  color: #b3d4fc;
+}

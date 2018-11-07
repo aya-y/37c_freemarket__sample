@@ -1,0 +1,31 @@
+= render partial: 'items/shared/header'
+.category-container.clearfix
+  %main.c-container
+    %section.c-title
+      %h2
+        カテゴリー一覧
+    .large-main
+      .large-category
+        - @category.each do |category|
+          %a.category-box
+            %p.l-category-n
+              = category.large_category
+  %main.m-container.clearfix
+    %section.l-title.clearfix
+      %h4
+        レディース
+    .medium-main
+      .medium-category
+        - @mcategory.each do |mcategory|
+          .category-box
+            %li.m-category-n
+              = mcategory.medium_category
+          %a.s-category
+            - @scategory.each do |scategory|
+              %p
+                / =link_to category_index_path, class: "name" do
+                /   = scategory.small_category
+                %a.name{:href => "category/large_category/1"}
+                  = scategory.small_category
+  = render partial: 'users/footer_sell_btn'
+= render partial: 'items/shared/footer'

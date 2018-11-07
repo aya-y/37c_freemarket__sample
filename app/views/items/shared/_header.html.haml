@@ -11,7 +11,9 @@
       %nav.menue-left
         %ul.item-menue
           %li.item-menue__list
-            %a.link  カテゴリーから探す
+            %a.link
+              = link_to category_index_path, class: "user-menue__list__content link" do
+                .text カテゴリーから探す
           %li.item-menue__list
             %a.link ブランドから探す
       %nav.menue-right

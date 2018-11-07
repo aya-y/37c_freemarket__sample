@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181103054813) do
+ActiveRecord::Schema.define(version: 20181106050151) do
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "image"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20181103054813) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "residential_name"
-    t.integer "phone_number", null: false
+    t.text "phone_number", null: false
     t.integer "postal_code", null: false
     t.text "profile"
     t.string "user_image"

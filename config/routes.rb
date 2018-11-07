@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/confirm' => 'users/registrations#confirm'
-    post 'users/complete' => 'users/registrations#complete'
+    post 'users/complete' => 'users/registrations#complete', as: 'user_detail'
   end
 
   root 'items#index'

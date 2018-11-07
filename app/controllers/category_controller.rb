@@ -1,7 +1,9 @@
 class CategoryController < ApplicationController
 
   def index
-
+    @category = LargeCategory.select("large_category")
+    @mcategory = MediumCategory.select("medium_category")
+    @scategory = SmallCategory.select("small_category")
   end
 
   def large_category

@@ -1,23 +1,28 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+
   # before_action :configure_account_update_params, only: [:update]
-  before_action :create, only: [:complete]
 
   def confirm
     @user = User.new(sign_up_params)
     if @user.valid?
-      render :action => 'confirm'
+      @user.save
+      @userdetail = UserDetail.new
+      render action: 'confirm'
     else
-     render :action => 'new'
+     render action: 'new'
     end
   end
 
   def complete
-    @user.save
-    @users << @user
-    render :action => 'complete'
+    @userdetail = UserDetail.new(signup_params)
+    if @userdetail.valid?
+       @userdetail.save
+       render action: 'complete'
+    else
+       render action: 'new'
+    end
   end
 
   # GET /resource
@@ -79,4 +84,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+private
+  def signup_params
+    params.require(:user_detail).permit(:family_name, :first_name, :kana_family_name, :kana_first_name, :birthday, :prefecture, :city, :address, :residential_name, :phone_number, :postal_code, :profile, :user_image)
+  end
+
 end
