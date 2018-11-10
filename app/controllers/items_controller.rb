@@ -62,14 +62,16 @@ PICTURE_COUNT = 4
 
   def edit
     @item = Item.find(params[:id])
+    @images = @item.images
     # @item.images = Image.new if @item.images.blank?
-    # count = @item.images.count
-    # (PICTURE_COUNT - count).times {@item.images.build}
+    count = @images.length
+    (PICTURE_COUNT - count).times {@item.images.build}
     # @item.images.cache_key unless @item.images.blank?
   end
 
   def update
     @item = Item.find(params[:id])
+    binding.pry
     if @item.update(item_params)
       redirect_to users_listing_path, notice: "商品を編集しました"
     else

@@ -13,13 +13,10 @@
             .upload-dropbox__text
               ドラッグアンドドロップ
               %br またはクリックしてファイルをアップロード
-              = f.fields_for :images do |i|
-                = image_tag i.object.image, size: "75x75" if i.object.image.present?
-                -# = i.file_field :image
-                -# = i.hidden_field :id, value: i.object.id
-              -# = f.fields_for :images do |i|
-              -#   = i.label :image, "出品画像" do
-              -#     = i.file_field :image
+              = f.fields_for :images, @images do |i|
+                -# = image_tag i.object.image, size: "75x75" if i.object.image.present?
+                = i.file_field :image
+                = i.hidden_field :id, value: i.object.id
   .sell-content
     .form-group
       %label
