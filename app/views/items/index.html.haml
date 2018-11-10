@@ -1,7 +1,9 @@
 = flash[:notice]
 .default-container
-  =render "items/shared/header"
-  -# =render "shared/header_signup"
+  -if user_signed_in?
+    =render partial: "items/shared/header", locals: {}
+  -else
+    =render partial: "items/shared/header_signup"
   %main{class: "white", role: "main" }
     %section.top-main-visual
       .top-contents
