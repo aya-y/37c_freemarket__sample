@@ -11,5 +11,5 @@ class UserDetail < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
   validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
-  validates :profile, length: { maximum: 100 }
+  validates :profile, length: { maximum: 5000 }
 end

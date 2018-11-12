@@ -5,8 +5,7 @@
       %h2 住所入力
     .l-single-inner
       .l-single-content
-        = form_for @userdetail, url: {action: "complete"} do |f|
-          = devise_error_messages!
+        = form_for [@user, @userdetail], url: user_user_details_path do |f|
           .form-group
             = f.label :お名前
             = f.label :必須, class: "required"
@@ -48,13 +47,11 @@
           .form-group
             = f.label :プロフィール
             = f.label :任意, class: "any"
-            = f.text_field :profile, class: "input-default", placeholder: "100文字以内で自己紹介をお願いします"
-          .form-group
-            = f.label :あなたの写真
-            = f.label :任意, class: "any"
-            = f.text_field :user_image, class: "input-default", placeholder: "選択してください"
+            = f.text_area :profile, class: "input-default", placeholder: "5,000文字以内で自己紹介をお願いします"
           .form-group
             = f.submit "次へ進む", class: "next-submit"
-  = invisible_recaptcha_tags
   =render "items/shared/simple_footer"
-  = render "devise/shared/links"
+  / = render "devise/shared/links"
+  / = invisible_recaptcha_tags {"次へ進む", class: "next-submit"}
+  / .form-group
+  / = invisible_rechaptcha_tags , class: "next-submit"

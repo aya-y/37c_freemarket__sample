@@ -6,8 +6,7 @@
         %h2 会員情報入力
       .l-single-inner
         .l-single-content
-          = form_for @user, url: {action: "confirm"} do |f|
-            = devise_error_messages!
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             .form-group
               = f.label :ニックネーム
               = f.label :必須, class: "required"
@@ -25,6 +24,6 @@
               = f.label :必須, class: "required"
               = f.password_field :password_confirmation, class: "input-default" , placeholder: "6文字以上"
             .form-group
-              = f.submit "次へ進む", class: "next-submit"
+              = invisible_recaptcha_tags ({text: "次へ進む", class: "next-submit"})
   =render "items/shared/simple_footer"
-  = invisible_recaptcha_tags
+

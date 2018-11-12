@@ -1,0 +1,22 @@
+.single-conteiner
+  =render "items/shared/simple_header"
+  .single-main
+    .i-single-container
+      .l-single-head
+        %h2 新規会員登録
+      .l-single-inner
+        .l-single-content
+          %a.btn-sns-facebook
+            Facebookで登録
+            .icon-facebook.fa-lg
+              = fa_icon'facebook-square'
+          %a.btn-sns-google
+            Googleで登録
+            .icon-google-plus.fa-lg
+              = fa_icon'google-plus'
+          = link_to sign_up_path, method: :post do
+            .btn-mail
+              メールアドレスで登録
+              .icon-mail.fa-lg
+                = fa_icon'envelope'
+  =render "items/shared/simple_footer"

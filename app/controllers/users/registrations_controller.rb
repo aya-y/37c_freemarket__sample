@@ -4,39 +4,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # before_action :configure_account_update_params, only: [:update]
 
-  def confirm
-    @user = User.new(sign_up_params)
-    if @user.save
-      @userdetail = UserDetail.new
-      render action: 'confirm'
-    else
-      render action: 'new'
-    end
-  end
 
-  def complete
-    @userdetail = UserDetail.new(signup_params)
-    if @userdetail.save
-      render action: 'complete'
-    else
-      # binding.pry
-      redirect_to action: 'new'
-    end
+  def index
   end
 
   # GET /resource
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
-  # def create
-  #   @user = User.new
-  #     if verify_recaptcha
-  #       super
-  #     else
-  #         respond_with_navigational(resource) {render :new}
-  #     end
-  # end
+  def create
+    @user = User.new(sign_up_params)
+      if verify_recaptcha
+        super
+      else
+          respond_with_navigational(resource) {render :new}
+      end
+  end
 
   # GET /resource/edit
   # def edit
@@ -75,18 +59,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
+     new_user_user_detail_path(resource)
   #   super(resource)
-  # end
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-private
-  def signup_params
-    params.require(:user_detail).permit(:family_name, :first_name, :kana_family_name, :kana_first_name, :birthday, :prefecture, :city, :address, :residential_name, :phone_number, :postal_code, :profile, :user_image)
-  end
 
 end

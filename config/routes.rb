@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    post 'users/confirm' => 'users/registrations#confirm'
-    post 'users/complete' => 'users/registrations#complete', as: 'user_detail'
+    get  'users/index' => 'users/registrations#index'
+    post 'sign_up' => 'users/registrations#new'
     post 'users/logout'  => 'users/sessions#logout'
   end
 
@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get "users/listing" => "users#listing"
   get "users/logout" => "users#logout"
   resources :users, only: [:index, :edit, :update, :show] do
-    resources :ueser_detail, only: [:edit, :update]
+      resources :user_details, only: [:new ,:create, :edit, :update]
+      # get 'user/:user_id/user_details/new' => 'user_details#new', as: 'user_details/new'
   end
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
