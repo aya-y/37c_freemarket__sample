@@ -5,24 +5,15 @@
       %h2
         プロフィール
     %section.profile-icon
-      = form_for @user do |f|
+      = form_for @user  do |f|
         %figure
           = image_tag 'member_photo_noimage_thumb.png', :size =>'60x60', class: "user-image"
         .name-form
           = f.text_field :nickname, class: "name-default", autofocus: true,placeholder: "Ann", value: @user.nickname
-    .setting-profile-content
-      = form_for @userdetail do |f|
         .form
-          = f.text_area :profile, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: @userdetail.profile
-          = f.submit "変更する", class: "next-submit"
-  = render partial: 'sidebar'
+          = f.fields_for :user_detail do |d|
+            = d.text_area :profile, class: "input-default",placeholder: "初めまして、よろしくお願いします。", value: @userdetail.profile
+            = d.submit "変更する", class: "update-submit"
+  = render partial: 'sidebar', locals: { user: @user }
   = render partial: 'footer_sell_btn'
 = render partial: 'items/shared/footer'
-
-
-/ = form_for @user, url: {action: "confirm"} do |f|
-/             = devise_error_messages!
-/             .form-group
-/               = f.label :ニックネーム
-/               = f.label :必須, class: "required"
-/               = f.text_field :nickname, class: "input-default", autofocus: true, placeholder: "例）メルカリ太郎"

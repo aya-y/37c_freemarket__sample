@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one  :user_detail, dependent: :destroy
+  accepts_nested_attributes_for :user_detail, update_only: true
   has_many :items, dependent: :destroy
   has_many :bought_items, foreign_key: "buyer_id", class_name: "Item"
   has_many :saling_items, ->{where("buyer_id is NULL")}, foreign_key: "saler_id", class_name: "Item"

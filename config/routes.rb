@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get "users/purchased" => "users#purchased"
   get "users/listing" => "users#listing"
   get "users/logout" => "users#logout"
-  resources :users, only: [:index, :edit, :update, :show]
+  resources :users, only: [:index, :edit, :update, :show] do
+    resources :ueser_detail, only: [:edit, :update]
+  end
   get "items/area/:prefecture" => "items#area"
   resources :items, only: [:new, :create, :edit, :update, :destroy, :show] do
     post :payjp, on: :member
