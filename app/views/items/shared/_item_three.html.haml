@@ -1,36 +1,44 @@
 %section.item-box
-  %a
+  =link_to item_path(item.id) do
     %figure.item-box__photo
-      %image{src: "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m93948486473_1.jpg?1540436970", class: "item-box-image"}
+      .item-box-image
+        = image_tag item.images.first.image, size: "213x213"
+        - if item.status == "trading" || item.status == "shipped"
+          %figcaption
+            .item-sold-out-badge.bold
+              .sold-badge SOLD
     .item-box__text
-      %h3.item-box__text__name.font-2  PAR ICI ハイテンションストレッチ ルーズゴムパンツ
+      %h3.item-box__text__name.font-2
+        = item.item_name
       .item-box__text__num.clearfix
-        .item-box__text__num__price  ¥500
+        .item-box__text__num__price
+          = number_to_currency(item.price, unit: "¥",precision: 0)
         .item-box__text__num__likes.font-2
           %i{class: "far fa-heart heart-icon"}
           %span 10
         .item-box__text__num__tax  (税込)
-%section.item-box
-  %a
-    %figure.item-box__photo
-      %image.item-box-image{src: "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m17976203729_1.jpg?1528430523", class: "item-img"}
-    .item-box__text
-      %h3.item-box__text__name.font-2  ウェルカムスペースセット
-      .item-box__text__num.clearfix
-        .item-box__text__num__price  ¥1,000
-        .item-box__text__num__likes.font-2
-          %i{class: "far fa-heart heart-icon"}
-          %span 10
-        .item-box__text__num__tax  (税込)
-%section.item-box
-  %a
-    %figure.item-box__photo
-      %image.item-box-image{src: "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m69647769056_1.jpg?1540444536", class: "item-img"}
-    .item-box__text
-      %h3.item-box__text__name.font-2  supreme キャップ シュプリーム cap
-      .item-box__text__num.clearfix
-        .item-box__text__num__price  ¥10,000
-        .item-box__text__num__likes.font-2
-          %i{class: "far fa-heart heart-icon"}
-          %span 10
-        .item-box__text__num__tax  (税込)
+        / = render partial: "items/shared/item_three" , collection: @item.user.items, as: "items",collection: @item, as: "current_item"
+/ %section.item-box
+/   %a
+/     %figure.item-box__photo
+/       %image.item-box-image{src: "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m17976203729_1.jpg?1528430523", class: "item-img"}
+/     .item-box__text
+/       %h3.item-box__text__name.font-2  ウェルカムスペースセット
+/       .item-box__text__num.clearfix
+/         .item-box__text__num__price  ¥1,000
+/         .item-box__text__num__likes.font-2
+/           %i{class: "far fa-heart heart-icon"}
+/           %span 10
+/         .item-box__text__num__tax  (税込)
+/ %section.item-box
+/   %a
+/     %figure.item-box__photo
+/       %image.item-box-image{src: "https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m69647769056_1.jpg?1540444536", class: "item-img"}
+/     .item-box__text
+/       %h3.item-box__text__name.font-2  supreme キャップ シュプリーム cap
+/       .item-box__text__num.clearfix
+/         .item-box__text__num__price  ¥10,000
+/         .item-box__text__num__likes.font-2
+/           %i{class: "far fa-heart heart-icon"}
+/           %span 10
+/         .item-box__text__num__tax  (税込)

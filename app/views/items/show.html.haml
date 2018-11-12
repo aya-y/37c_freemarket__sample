@@ -93,13 +93,13 @@
       = number_to_currency(@item.price, unit: "¥",precision: 0)
     %span.item.tax  (税込)
     %span.item-shipping-fee 送料込み
-  - if user_signed_in? && current_user.id == @item.user_id
+  - if user_signed_in? && current_user.id == @item.user_id && (@item.status == "displayed" or @item.status =="stopped")
     .item-description
       %p
         = simple_format(@item.description)
     .item-change-box
     .btn__default
-      = link_to "商品の編集",edit_user_path(@item),class: "btn__default--red"
+      = link_to "商品の編集",edit_item_path(@item),class: "btn__default--red"
       .btn__default--or
         or
       - if @item.status == "displayed"
@@ -107,6 +107,12 @@
       - else
         = link_to "出品を再開する",resume_item_path(@item),class: "btn__default--red"
       = link_to "この商品を削除する",item_path(@item),method: :delete, data: {confirm: "本当に削除しますか？"},class: "btn__default--grey"
+  - elsif user_signed_in? && current_user.id == @item.user_id && (@item.status == "shipped" or @item.status =="trading" )
+    商品が購入されました。マイページから取引状況をご確認ください。
+  - elsif  @item.buyer_id == current_user.id  && (@item.status == "shipped" or @item.status =="trading" )
+    お客様の購入した商品です。マイページから取引状況をご確認ください。
+  - elsif   @item.status == "shipped" or @item.status =="trading"
+    売却済みの商品です。購入はできません。
   - else
     = link_to '購入画面に進む', buy_item_path(@item), class: "item-buy-btn btn-red bold"
     .item-description
@@ -155,10 +161,16 @@
     %li
       %a
         %i{class: 'fab fa-pinterest-square sns-icon pinterest-icon'}
-.item-in-user-profile
-  %h2.items-box-head.bold
-    %a 全ての商品
-
-  .items-profile.items-box-content.clearfix
-    = render partial: "items/shared/item_three"
+  .item-in-user-profile
+    - if @other_items.length <= 0
+      %h2.items-box-head.bold
+        %a
+          = "#{@item.user.nickname}さんのその他の商品はありません"
+      .items-profile.items-box-content.clearfix
+    - else
+      %h2.items-box-head.bold
+        %a
+          = "#{@item.user.nickname}さんのその他の商品"
+      .items-profile.items-box-content.clearfix
+        = render partial: "items/shared/item_three" , collection: @other_items, as:"item"
 = render partial: 'items/shared/footer'

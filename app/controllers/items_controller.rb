@@ -7,7 +7,7 @@ PICTURE_COUNT = 4
     Payjp.api_key = PAYJP_SECRET_KEY
     @user = User.find(current_user.id)
     @item.with_lock do
-      if @item.buyer_id == nil
+      if @item.buyer_id == nil && @item.status == "displayed"
         Payjp::Charge.create(
           :amount => @item.price,
           :card => params['payjp-token'],
@@ -19,13 +19,13 @@ PICTURE_COUNT = 4
         flash[:notice] = '購入が完了しました。'
       else
         redirect_to :root
-        flash[:notice] = '購入に失敗しました。申し訳ありません。売却済みの商品です。'
+        flash[:notice] = '購入に失敗しました。申し訳ありません。入力中に出品停止されたか、他ユーザーに売却されました。'
       end
     end
   end
 
   def index
-    @items = Item.where(status: :displayed).order("RAND()").limit(4)
+    @items = Item.where.not(status: :stopped).where.not(status: :received).order("RAND()").limit(4)
     @ladies_items = Item.where(large_category_id: '1').where(status: :displayed).order("created_at DESC").limit(4)
   end
 
@@ -59,6 +59,7 @@ PICTURE_COUNT = 4
 
   def show
     @images = @item.images.order("created_at DESC")
+    @other_items = Item.where.not(status: :received).where.not(id: @item.id)
   end
 
   def edit
@@ -74,7 +75,7 @@ PICTURE_COUNT = 4
   def update
     if @item.update(item_params)
       redirect_to users_listing_path, notice: "商品を編集しました"
-      flash[:resume] = "出品の再開をしました。"
+      flash[:resume] = "編集を完了しました。"
     else
       redirect_to edit_item_path
     end
