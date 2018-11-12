@@ -8,6 +8,7 @@ class TransactionDetailsController < ApplicationController
     end
       @images = @item.images
       @user = @item.user
+      @other_items = Item.where.not(status: :received).where.not(id: @item.id).limit(3)
   end
 
   def update
